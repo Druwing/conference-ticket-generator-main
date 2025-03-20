@@ -12,7 +12,6 @@ document.getElementById('ticketForm').addEventListener('submit', function(event)
     const emailError = document.getElementById('emailError');
     const githubError = document.getElementById('githubError');
 
-    // Validate Avatar
     if (!avatar.files[0]) {
         avatarError.textContent = 'Please upload an avatar.';
         isValid = false;
@@ -23,7 +22,6 @@ document.getElementById('ticketForm').addEventListener('submit', function(event)
         avatarError.textContent = '';
     }
 
-    // Validate Full Name
     if (!fullName.value.trim()) {
         nameError.textContent = 'Please enter your full name.';
         isValid = false;
@@ -31,7 +29,6 @@ document.getElementById('ticketForm').addEventListener('submit', function(event)
         nameError.textContent = '';
     }
 
-    // Validate Email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email.value)) {
         emailError.textContent = 'Please enter a valid email address.';
@@ -40,7 +37,6 @@ document.getElementById('ticketForm').addEventListener('submit', function(event)
         emailError.textContent = '';
     }
 
-    // Validate GitHub Username
     if (!github.value.trim()) {
         githubError.textContent = 'Please enter your GitHub username.';
         isValid = false;
@@ -49,13 +45,11 @@ document.getElementById('ticketForm').addEventListener('submit', function(event)
     }
 
     if (isValid) {
-        // Exibir os dados no ticket
         document.getElementById('ticketName').textContent = fullName.value;
         document.getElementById('ticketEmail').textContent = email.value;
         document.getElementById('ticketFullName').textContent = fullName.value;
         document.getElementById('ticketGithub').textContent = github.value;
 
-        // Exibir a imagem do avatar no ticket
         const ticketAvatar = document.getElementById('ticketAvatar');
         if (avatar.files[0]) {
             const reader = new FileReader();
@@ -65,7 +59,6 @@ document.getElementById('ticketForm').addEventListener('submit', function(event)
             reader.readAsDataURL(avatar.files[0]);
         }
 
-        // Mostrar o ticket
         document.getElementById('ticketDisplay').classList.remove('hidden');
     }
 });
